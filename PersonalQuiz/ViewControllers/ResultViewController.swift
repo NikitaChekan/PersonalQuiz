@@ -13,6 +13,11 @@ class ResultViewController: UIViewController {
     // Определить наиболее часто встречающийся тип животного
     // Отобразить результаты в соответствии с этим животным
     
+//    [PersonalQuiz.Answer(title: "Стейк", animal: PersonalQuiz.Animal.dog),
+//     PersonalQuiz.Answer(title: "Плавать", animal: PersonalQuiz.Animal.dog),
+//     PersonalQuiz.Answer(title: "Ненавижу", animal: PersonalQuiz.Animal.cat)]
+    var answersChosen: [Answer] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.setHidesBackButton(true, animated: true)
@@ -24,7 +29,10 @@ class ResultViewController: UIViewController {
     }
     
     deinit {
-        print("\(type(of: self)) has been deallocated")
+        print(answersChosen)
     }
+//    deinit {
+//        print("\(type(of: self)) has been deallocated")
+//    }
     
 }
