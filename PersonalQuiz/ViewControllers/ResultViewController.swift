@@ -9,10 +9,13 @@ import UIKit
 
 class ResultViewController: UIViewController {
 
-    
+    // Передать массив с ответами на экран с результатами
+    // Определить наиболее часто встречающийся тип животного
+    // Отобразить результаты в соответствии с этим животным
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.setHidesBackButton(true, animated: true)
 
     }
 
