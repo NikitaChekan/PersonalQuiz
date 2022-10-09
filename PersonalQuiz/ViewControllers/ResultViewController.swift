@@ -28,22 +28,21 @@ final class ResultViewController: UIViewController {
     
     private func identifiesTheAnimal() {
         let animals = answersChosen.map { String($0.animal.rawValue) }
-        print(animals)
-        
         let countedSet = NSCountedSet(array: animals)
         
-        let resultAnimal = countedSet.max { countedSet.count(for: $0) < countedSet.count(for: $1) }
+        let resultAnimal = countedSet.max {
+            countedSet.count(for: $0) < countedSet.count(for: $1)
+        }
         resultAnimalLabel.text = "Вы - \(resultAnimal ?? "")"
     }
     
     private func identifiesDefinitionForAnimal() {
-        let difenittion = answersChosen.map { $0.animal.definition }
-        print(difenittion)
+        let definitions = answersChosen.map { $0.animal.definition }
+        let countedSet = NSCountedSet(array: definitions)
         
-        let sumto = NSCountedSet(array: difenittion)
-        
-        let resultDifenittion = sumto.max { sumto.count(for: $0) < sumto.count(for: $1) }
+        let resultDifenittion = countedSet.max {
+            countedSet.count(for: $0) < countedSet.count(for: $1)
+        }
         resultDefinitionLabel.text = (resultDifenittion as? String)
     }
-
 }
