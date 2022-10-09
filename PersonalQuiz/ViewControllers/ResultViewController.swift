@@ -7,32 +7,42 @@
 
 import UIKit
 
-class ResultViewController: UIViewController {
-
-    // Передать массив с ответами на экран с результатами
-    // Определить наиболее часто встречающийся тип животного
-    // Отобразить результаты в соответствии с этим животным
+final class ResultViewController: UIViewController {
     
-//    [PersonalQuiz.Answer(title: "Стейк", animal: PersonalQuiz.Animal.dog),
-//     PersonalQuiz.Answer(title: "Плавать", animal: PersonalQuiz.Animal.dog),
-//     PersonalQuiz.Answer(title: "Ненавижу", animal: PersonalQuiz.Animal.cat)]
+    @IBOutlet var resultAnimalLabel: UILabel!
+    @IBOutlet var resultDefinitionLabel: UILabel!
+    
     var answersChosen: [Answer] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.setHidesBackButton(true, animated: true)
-
+        
+        identifiesTheAnimal()
     }
 
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
     
-    deinit {
-        print(answersChosen)
+    private func identifiesTheAnimal() {
+        let animals = answersChosen.map { String($0.animal.rawValue) }
+        print(animals)
+        
+        let countedSet = NSCountedSet(array: animals)
+        
+        let resultAnimal = countedSet.max { countedSet.count(for: $0) < countedSet.count(for: $1) }
+        resultAnimalLabel.text = "Вы - \(resultAnimal ?? "")"
     }
-//    deinit {
-//        print("\(type(of: self)) has been deallocated")
-//    }
     
+    private func identifiesDefinitionForAnimal() {
+        let difenittion = answersChosen.map { $0.animal.definition }
+        print(difenittion)
+        
+        let sumto = NSCountedSet(array: difenittion)
+        
+        let resultDifenittion = sumto.max { sumto.count(for: $0) < sumto.count(for: $1) }
+        resultDefinitionLabel.text = (resultDifenittion as? String)
+    }
+
 }
