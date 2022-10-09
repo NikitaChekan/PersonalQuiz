@@ -19,6 +19,7 @@ final class ResultViewController: UIViewController {
         navigationItem.setHidesBackButton(true, animated: true)
         
         identifiesTheAnimal()
+        identifiesDefinitionForAnimal()
     }
 
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
